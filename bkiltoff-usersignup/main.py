@@ -14,8 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import webapp2
+import cgi
 
-"""
+form="""
 <!DOCTYPE html>
 
 <html>
@@ -93,10 +95,13 @@ class MainHandler(webapp2.RequestHandler):
     def write_form(self, error="", usr_input_name="",
                    usr_input_p1="", usr_input_p2="",
                    usr_input_email=""):
-        self.response.out.write()
+        self.response.out.write(form %{"username":usr_input_name,
+                                        "password":usr_input_p1,
+                                        "verify":usr_input_p2,
+                                        "email":usr_input_email})
         
     def get(self):
-        self.response.write('Hello world!')
+        self.write_form()
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
