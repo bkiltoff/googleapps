@@ -163,7 +163,7 @@ class MainHandler(webapp2.RequestHandler):
             self.redirect('/thx?' + urllib.urlencode(query_params))
         else:            ##invalid something, rewrite form
             self.response.out.write(HTML_HEADER)            
-            self.write_form(nm,pw1,pw2,email)
+            self.write_form(nm,"","",email)
             self.response.out.write(HTML_FOOTER)
 
 class SuccessHandler(webapp2.RequestHandler):
