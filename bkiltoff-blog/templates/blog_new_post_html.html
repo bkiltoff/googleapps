@@ -1,0 +1,27 @@
+{% extends "blog_base_html.html" %}
+
+{% block content %}
+
+<form method="post">
+	<h2>New Post</h2>
+	<label>
+		<div>Blog Post Subject Title</div>
+		<input type="text" name="np_title"></input>
+	</label>
+	<label>
+		<div>Blog Post</div>
+		<textarea name="npost" style="width:600px; 		height:120px"></textarea>
+	</label>
+	<div>
+		<button>
+			Add
+		</button>
+	</div>
+	<div>
+		{% if error %}
+			{{error}}
+		{% endif %}
+
+</form>
+
+{% endblock %}
