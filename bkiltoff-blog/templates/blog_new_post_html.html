@@ -6,20 +6,20 @@
 	<h2>New Post</h2>
 	<label>
 		<div>Blog Post Subject Title</div>
-		<input type="text" name="np_title"></input>
+		<input type="text" name="subject" 
+			value={{np_title}}></input>
 	</label>
 	<label>
 		<div>Blog Post</div>
-		<textarea name="npost" style="width:600px; 		height:120px"></textarea>
+		<textarea name="content" style="width:600px; 		height:120px">{{npost}}</textarea>
 	</label>
 	<div>
 		<button>
 			Add
 		</button>
 	</div>
-	<div>
 		{% if error %}
-			{{error}}
+		<div class="error">{{error}}</div>
 		{% endif %}
 
 </form>
