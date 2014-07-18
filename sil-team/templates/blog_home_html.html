@@ -1,0 +1,16 @@
+{% extends "blog_base_html.html" %}
+
+{% block content %}
+<br>
+<a href="newpost">Click here for new post</a>
+<br>
+<h2>Posts List</h2>
+<hr>
+{% for post in posts %}
+	<div class ="post">
+		<div class="post_title">{{post.title}}</div>
+		<pre class="post_body">{{post.content}}</pre>
+	</div>
+{% endfor %}
+
+{% endblock %}
