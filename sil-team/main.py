@@ -1,7 +1,10 @@
+#sys.path.insert(0, 'libs')
+#import fix_path
+#import sys
+import requests
 import webapp2
 import os
 import jinja2
-
 from google.appengine.ext import db
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
