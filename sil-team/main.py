@@ -1,6 +1,7 @@
-#sys.path.insert(0, 'libs')
+##import sys
+##sys.path.insert(0, 'libs')
 #import fix_path
-#import sys
+#api key grass856wool
 import requests
 import webapp2
 import os
@@ -21,3 +22,18 @@ class Handler(webapp2.RequestHandler):
 
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
+
+class LandingPage(Handler):
+    def get(self):
+        comp = "https://snoisle.teamwork.com/tasks/"
+        key = "grass856wool"
+        action = "2193526"
+
+        req = requests.request('GET', comp,
+auth=requests.auth.HTTPBasicAuth(key, 'password'))
+        txt = req
+        self.render("home_html.html", example=txt)
+
+app = webapp2.WSGIApplication([
+    ('/', LandingPage),
+    ], debug=True)
