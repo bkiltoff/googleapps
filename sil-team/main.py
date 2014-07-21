@@ -3,6 +3,7 @@
 #import fix_path
 #api key grass856wool
 import requests
+import json
 import webapp2
 import os
 import jinja2
@@ -27,12 +28,13 @@ class LandingPage(Handler):
     def get(self):
         comp = "https://snoisle.teamwork.com/tasks/"
         key = "grass856wool"
-        action = "2193526"
+        action = "https://snoisle.teamwork.com/tasks/2193526.json"
 
-        req = requests.request('GET', comp,
-auth=requests.auth.HTTPBasicAuth(key, 'password'))
-        txt = req
-        self.render("home_html.html", example=txt)
+        r = requests.request('GET', action,
+                            auth=requests.auth.HTTPBasicAuth(key, 'password'))
+
+        
+        self.render("home_html.html", example=r.json())
 
 app = webapp2.WSGIApplication([
     ('/', LandingPage),
