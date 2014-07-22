@@ -1,7 +1,4 @@
-##import sys
-##sys.path.insert(0, 'libs')
-#import fix_path
-#api key grass856wool
+import logging
 import requests
 import json
 import webapp2
@@ -32,9 +29,9 @@ class LandingPage(Handler):
 
         r = requests.request('GET', action,
                             auth=requests.auth.HTTPBasicAuth(key, 'password'))
-
-        
-        self.render("home_html.html", example=r.json())
+        ex =json.dumps(r.json()) # this line works
+        #ex = json.loads(r) #doezn't work... what's going on in above working line?
+        self.render("home_html.html",example=ex)
 
 app = webapp2.WSGIApplication([
     ('/', LandingPage),
