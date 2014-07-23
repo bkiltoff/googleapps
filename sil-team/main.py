@@ -28,12 +28,13 @@ class Handler(webapp2.RequestHandler):
 
 class LandingPage(Handler):
     def get(self):
-        comp = "https://snoisle.teamwork.com/tasks/"
-        key = "grass856wool"
-        action = "2203348.json"
-
-        r = requests.request('GET', comp+action,
-                            auth=requests.auth.HTTPBasicAuth(key, 'password'))
+        comp = u"https://snoisle.teamwork.com/tasks/"
+        key = u"grass856wool"
+        action = u"2203348.json"
+        authz = requests.auth.HTTPBasicAuth(key,'pass')
+        url = comp+action
+        
+        r = requests.get(url=url, auth=authz)
         ex =r.json()
 
         test = Task()
@@ -42,15 +43,18 @@ class LandingPage(Handler):
         self.render("home_html.html", task_id=test.taskId, task_name=test.taskName)
 
     def post(self):
-        comp = "https://snoisle.teamwork.com/tasks/"
-        key = "grass856wool"
-        action = "2203348.json"
-
-        newTaskName = self.get.request('inp_taskName')
+        comp = u"https://snoisle.teamwork.com/tasks/"
+        key = u"grass856wool"
+        action = u"2203348.json"
+        authz = requests.auth.HTTPBasicAuth(key,'pass')
+        url = comp+action
+        newTaskName = self.request.get('inp_taskName')
+        cont = json.dumps({u'todo-item':{u'content':newTaskName}})
         
-        r = requests.request('PUT', comp+action, 
-                            auth=requests.auth.HTTPBasicAuth(key, 'password'))
+        r = requests.put(url, data=cont, auth=authz)
+        self.render("home_html.html", task_id="response=", task_name=r.status_code)
 
+        
 app = webapp2.WSGIApplication([
     ('/', LandingPage),
     ], debug=True)
