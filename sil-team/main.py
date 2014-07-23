@@ -8,7 +8,12 @@ from google.appengine.ext import db
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
-                                   autoescape = True)
+                                   autoescape = False) ##set to true when done fucking around
+
+class Task(db.Model):
+    taskId = db.IntegerProperty()
+    taskName = db.StringProperty()
+    
 
 class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
@@ -25,13 +30,16 @@ class LandingPage(Handler):
     def get(self):
         comp = "https://snoisle.teamwork.com/tasks/"
         key = "grass856wool"
-        action = "https://snoisle.teamwork.com/tasks/2193526.json"
+        action = "2203348.json"
 
-        r = requests.request('GET', action,
+        r = requests.request('GET', comp+action,
                             auth=requests.auth.HTTPBasicAuth(key, 'password'))
-        ex =json.dumps(r.json()) # this line works
-        #ex = json.loads(r) #doezn't work... what's going on in above working line?
-        self.render("home_html.html",example=ex)
+        ex =r.json()
+
+        test = Task()
+        test.taskName = ex[u'todo-item'][u'content']
+        test.taskId = int(ex[u'todo-item'][u'id'])
+        self.render("home_html.html", task_id=test.taskId, task_name=test.taskName)
 
 app = webapp2.WSGIApplication([
     ('/', LandingPage),
