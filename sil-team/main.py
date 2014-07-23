@@ -41,6 +41,16 @@ class LandingPage(Handler):
         test.taskId = int(ex[u'todo-item'][u'id'])
         self.render("home_html.html", task_id=test.taskId, task_name=test.taskName)
 
+    def post(self):
+        comp = "https://snoisle.teamwork.com/tasks/"
+        key = "grass856wool"
+        action = "2203348.json"
+
+        newTaskName = self.get.request('inp_taskName')
+        
+        r = requests.request('PUT', comp+action, 
+                            auth=requests.auth.HTTPBasicAuth(key, 'password'))
+
 app = webapp2.WSGIApplication([
     ('/', LandingPage),
     ], debug=True)
