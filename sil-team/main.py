@@ -52,7 +52,7 @@ class LandingPage(Handler):
         cont = json.dumps({u'todo-item':{u'content':newTaskName}})
         
         r = requests.put(url, data=cont, auth=authz)
-        self.render("home_html.html", task_id="response=", task_name=r.status_code)
+        self.redirect("/")
 
         
 app = webapp2.WSGIApplication([
