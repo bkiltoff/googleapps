@@ -1,20 +1,19 @@
-#new comment to test sync with git
 import logging
 import requests
 import json
 import webapp2
 import os
 import jinja2
-from google.appengine.ext import db
+import tpm.models as x 
+
+# from google.appengine.ext import db
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                    autoescape = False) ##set to true when done fucking around
 
-class Task(db.Model):
-    taskId = db.IntegerProperty()
-    taskName = db.StringProperty()
-    
+class Task(x.Model):
+    pass    
 
 class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
