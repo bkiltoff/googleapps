@@ -1,9 +1,7 @@
 {% extends "blog_base_html.html" %}
 
 {% block content %}
-<div class ="post">
-	<div class="post_title">{{title}}</div>
-	<pre class="post_body">{{content}}</pre>
-</div>
+{% import 'macros/elements/post.html' as post %}
+	{{ post.post('class',title,content) }}
 
 {% endblock %}
