@@ -3,23 +3,27 @@
 
 {% block content %}
 
+<a href="http://killedoff.com">Return to homepage</a>
 <br>
-<a href="newpost">Click here for new post</a>
 <br>
-
-<h2>Posts List</h2>
+<h2>Previous Blog Posts</h2>
 <hr>
 
 {% import 'macros/elements/post.html' as posttemp %}
 
 {% for post in posts %}
+	<div id="content" 
+		style="height:200px;
+		background-color:#EEEEEE;
+		width:400px;
+		float:left;
+		border: 2px solid;">
+	<ul>
 	{{posttemp.post('post',post.title,post.content)}}
-<!------------------
-	<div class ="post">
-		<div class="post_title">{{post.title}}</div>
-		<pre class="post_body">{{post.content}}</pre>
+	</ul>
 	</div>
---------------------->
 {% endfor %}
 
 {% endblock %}
+<div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
+Content goes here</div>
