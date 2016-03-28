@@ -4,7 +4,8 @@
 {% block content %}
 
 <a href="http://killedoff.com">Return to homepage</a>
-<br>
+<br><br>
+<a href="/newpost">Create new post</a>
 <br>
 <h2>Previous Blog Posts</h2>
 <hr>
@@ -16,14 +17,11 @@
 		style="height:200px;
 		background-color:#EEEEEE;
 		width:400px;
-		float:left;
-		border: 2px solid;">
-	<ul>
+		float:left;  
+		margin: 8px;
+		border: 4px solid;">
 	{{posttemp.post('post',post.title,post.content)}}
-	</ul>
-	</div>
+</div>
 {% endfor %}
 
 {% endblock %}
-<div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
-Content goes here</div>
