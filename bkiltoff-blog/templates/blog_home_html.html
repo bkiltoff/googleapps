@@ -10,10 +10,10 @@
 <hr>
 
 {% import 'macros/elements/post.html' as posttemp %}
-
+{% set Count = [] %}
 {% for post in posts %}
 	<div id="content" 
-		style="height:200px;
+		style="height:300px;
 		background-color:#EEEEEE;
 		width:400px;
 		float:left;
@@ -22,8 +22,24 @@
 	{{posttemp.post('post',post.title,post.content)}}
 	</ul>
 	</div>
+	{% if Count.append('1') %}{% endif %}
 {% endfor %}
-
+{% if Count|length == 0 %}
+	<div id="content" 
+		style="height:300px;
+		background-color:#EEEEEE;
+		width:400px;
+		float:left;
+		border: 2px solid;">
+	<ul>
+		<div class ="post">
+			<div class="post_title">Nothing to display!</div>
+			<pre class="post_body">There's nothing in the post database,
+or else it's not connected.</pre>
+		</div>
+	</ul>
+	</div>
+	{% endif %}
 {% endblock %}
 <div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
 Content goes here</div>

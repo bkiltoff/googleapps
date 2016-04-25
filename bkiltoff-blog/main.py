@@ -8,17 +8,20 @@ template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                    autoescape = True)
 
+#jinja handler... this stuff basically allows templating
 class Handler(webapp2.RequestHandler):
+	#the write function simply writes out some parameters and/or keyword paramters
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
-
+	#define a render_str function to leverage jinja's power to take a template and rewrite it using params
     def render_str(self, template, **params):
         t = jinja_env.get_template(template)
         return t.render(params)
-
+	#combine the render_str and write functions to allow easily rendering a set of params and a define template
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
+#
 class Post(db.Model):
     title = db.StringProperty(required = True)
     content = db.TextProperty(required = True) 
