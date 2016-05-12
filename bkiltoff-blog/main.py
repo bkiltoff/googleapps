@@ -1,10 +1,11 @@
 import os
 import jinja2 #jinja.pocoo.org
 import webapp2
-
 from google.appengine.ext import db
 
+#this basically says that templates will be stored in the subfolder of this project called 'templates'
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+#this basically devines the jinja_env variable using some cool jinja2 method
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                    autoescape = True)
 
@@ -21,15 +22,18 @@ class Handler(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
-#
+#This defines a Post object. the db.Model parameter implicitly passes some properties to be fulfilled
+#as I recall, the db.Model is a Google database defined model with a lot of possible properties
 class Post(db.Model):
     title = db.StringProperty(required = True)
     content = db.TextProperty(required = True) 
     created = db.DateTimeProperty(auto_now_add = True)
-    
+#so the Post object has required properties: title(string), content(longer string), and creation date (time stamp)
     
 
+#PostPage class for the page that takes post submissions
 class PostPage(Handler):
+	#render the page with post contents
     def render_posting(self, ttl="", pst="", err=""):
         self.render("blog_new_post_html.html", np_title=ttl, npost=pst, error=err)
 
