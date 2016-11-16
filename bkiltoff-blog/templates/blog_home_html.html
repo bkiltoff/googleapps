@@ -15,7 +15,6 @@
 <br>
 <h2>Previous Blog Posts</h2>
 <hr>
-<div id='content'>
 	<ul>
 {% for post in posts %}
 		<li>{{posttemp.post('post',post.title,post.content)}}</li>
@@ -23,5 +22,5 @@
 		<li>{{posttemp.post('post', no_title, no_content)}}</li>
 {% endfor %}
 	</ul>
-</div>
+
 {% endblock %}

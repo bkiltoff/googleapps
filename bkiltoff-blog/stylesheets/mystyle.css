@@ -14,18 +14,15 @@ ul {
 	margin:2.5%;
 }
 
-#content {
+.content {
+		text-align: left;
+		color: black;
 		height:25%;
 		background-color:#EEEEEE;
 		width:15%;
 		float:left;
 		border: 2px solid;}
 
-
-.post {
-	text-align: left;
-	color: black;
-}
 
 .post_title {
 	text-align: left;
