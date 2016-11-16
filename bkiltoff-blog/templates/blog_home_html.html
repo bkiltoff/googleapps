@@ -1,45 +1,27 @@
 {% extends "blog_base_html.html" %}
+{% set Count = [] %}
+{% for post in posts %}
+	{% if Count.append('1') %}{% endif %}
+{% endfor %}
+{% set no_title="Nothing to display!" %}
+{% set no_content="There's nothing in the DB or else it's not connected." %}
 
+
+{% import 'macros/elements/post.html' as posttemp %}
 
 {% block content %}
-
 <a href="http://killedoff.com">Return to homepage</a>
 <br>
 <br>
 <h2>Previous Blog Posts</h2>
 <hr>
-
-{% import 'macros/elements/post.html' as posttemp %}
-{% set Count = [] %}
+<div id='content'>
+	<ul>
 {% for post in posts %}
-	<div id="content" 
-		style="height:300px;
-		background-color:#EEEEEE;
-		width:400px;
-		float:left;
-		border: 2px solid;">
-	<ul>
-	{{posttemp.post('post',post.title,post.content)}}
-	</ul>
-	</div>
-	{% if Count.append('1') %}{% endif %}
+		<li>{{posttemp.post('post',post.title,post.content)}}</li>
+{% else %}
+		<li>{{posttemp.post('post', no_title, no_content)}}</li>
 {% endfor %}
-{% if Count|length == 0 %}
-	<div id="content" 
-		style="height:300px;
-		background-color:#EEEEEE;
-		width:400px;
-		float:left;
-		border: 2px solid;">
-	<ul>
-		<div class ="post">
-			<div class="post_title">Nothing to display!</div>
-			<pre class="post_body">There's nothing in the post database,
-or else it's not connected.</pre>
-		</div>
 	</ul>
-	</div>
-	{% endif %}
+</div>
 {% endblock %}
-<div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
-Content goes here</div>

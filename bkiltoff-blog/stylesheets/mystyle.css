@@ -1,13 +1,42 @@
+/*style for pre tags - allows proper line wraps*/
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/*style for unordered list elements - no bullets, no indent*/
+ul {
+  list-style-type: none;
+	padding:0;
+	margin:2.5%;
+}
+
+#content {
+		height:25%;
+		background-color:#EEEEEE;
+		width:15%;
+		float:left;
+		border: 2px solid;}
+
+
 .post {
-	text-align: center;
+	text-align: left;
 	color: black;
 }
 
-body {
-	background-color: #0d0d0d;
-	color: white;
+.post_title {
+	text-align: left;
+	font-weight: bold;
 }
 
-class {
-	background-color: #000000;
+.post_body {
+	text-align: left;
+}
+
+body {
+	color: white;
+	background-color: #0d0d0d;
 }
