@@ -29,7 +29,7 @@ class Handler(webapp2.RequestHandler):
 # properties to be fulfilled. As I recall, the db.Model is a Google database
 # defined model with a lot of possible properties
 class Post(db.Model):
-    title = db.StringProperty(required = True)
+    title = db.TextProperty(required = True)
     content = db.TextProperty(required = True)
     created = db.DateTimeProperty(auto_now_add = True)
 #so the Post object has required properties: title(string), content(longer

@@ -10,8 +10,6 @@ pre {
 /*style for unordered list elements - no bullets, no indent*/
 ul {
   list-style-type: none;
-	padding:0;
-	margin:2.5%;
 }
 
 .content {
@@ -25,11 +23,13 @@ ul {
 
 
 .post_title {
+	margin: 4%;
 	text-align: left;
 	font-weight: bold;
 }
 
 .post_body {
+	margin: 4%;
 	text-align: left;
 }
 
