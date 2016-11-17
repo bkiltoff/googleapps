@@ -37,3 +37,13 @@ body {
 	color: white;
 	background-color: #0d0d0d;
 }
+
+
+#newpost_title {
+	resize: horizontal;
+
+}
+
+#newpost_content {
+
+}

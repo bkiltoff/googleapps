@@ -5,13 +5,12 @@
 <form method="post">
 	<h2>New Post</h2>
 	<label>
-		<div>Blog Post Subject Title</div>
-		<input type="text" name="subject" 
-			value={{np_title}}></input>
+		<div>Title</div>
+		<textarea id="newpost_title" name="subject" placeholder="title">{{np_title}}</textarea>
 	</label>
 	<label>
-		<div>Blog Post</div>
-		<textarea name="content" style="width:600px; 		height:120px">{{npost}}</textarea>
+		<div>Content</div>
+		<textarea id="newpost_content"  name="content" placeholder="contents">{{npost}}</textarea>
 	</label>
 	<div>
 		<button>
