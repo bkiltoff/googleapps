@@ -1,3 +1,27 @@
+
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.header_div {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  background-color: darkgrey;
+}
+.left-header {
+  flex-grow: 3;
+  padding: 1rem;
+}
+
+.right-header {
+  flex-grow: 1;
+  text-align: right;
+  padding: 1rem;
+}
+
 /*style for pre tags - allows proper line wraps*/
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -13,14 +37,22 @@ ul {
 }
 
 .content {
-		text-align: left;
+/*		text-align: left;   */
 		color: black;
-		height:25%;
+/*		height:25%;   */
 		background-color:#EEEEEE;
-		width:15%;
-		float:left;
-		border: 2px solid;}
+/*		width:15%;
+/*		float:left;  */
+		border: 2px solid;
+    flex-grow: 2;
+  }
 
+.posts_section {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  flex-flow: wrap;
+}
 
 .post_title {
 	margin: 4%;

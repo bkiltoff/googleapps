@@ -1,6 +1,6 @@
 {% extends "blog_base_html.html" %}
-
 {% block content %}
+<a href="./"><h3>Return to posts!</h3></a>
 {% import 'macros/elements/post.html' as post %}
 	{{ post.post('class',title,content) }}
 {% endblock %}
