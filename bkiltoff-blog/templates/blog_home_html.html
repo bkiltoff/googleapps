@@ -7,7 +7,7 @@
 {% set no_content="There's nothing in the DB or else it's not connected." %}
 
 
-{% import 'macros/elements/post.html' as posttemp %}
+{% import 'macros/elements/post_macro.html' as posttemp %}
 
 {% block content %}
 <section>
@@ -27,9 +27,9 @@
 <hr>
 	<div class="posts_section">
 {% for post in posts %}
-		{{posttemp.post('post',post.title,post.content)}}
+			<a class="content" href="/{{post.post_id}}">{{posttemp.post_macro('post',post.title,post.content)}}</a>
 {% else %}
-		{{posttemp.post('post', no_title, no_content)}}
+		{{posttemp.post_macro('post', no_title, no_content)}}
 {% endfor %}
 	</div>
 

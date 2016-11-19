@@ -1,0 +1,7 @@
+<!--Macro to generate each post title and content  in div elements -->
+{% macro post_macro(classname='', title='', content='') %}
+<div class=inherit>
+	<div class="post_title"><pre>{{title}}<pre></div>
+	<pre class="post_body">{{content}}</pre>
+</div>
+{% endmacro %}

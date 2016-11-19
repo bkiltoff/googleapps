@@ -32,8 +32,10 @@ class Post(db.Model):
     title = db.TextProperty(required = True)
     content = db.TextProperty(required = True)
     created = db.DateTimeProperty(auto_now_add = True)
+    post_id = 1 #i want this to be  the actual entity id from google
+    
 #so the Post object has required properties: title(string), content(longer
-#string), and creation date (time stamp)
+#string), and creation date (time stamp), and postid(integer)
 
 
 #PostPage class for the page that takes post submissions
@@ -65,7 +67,6 @@ class PostPage(Handler):
         else:
             error = "invalid entry - something's missing here..."
             self.render_posting(new_post_title, new_post, error)
-
 
 class MainPage(Handler):
     def get(self):
